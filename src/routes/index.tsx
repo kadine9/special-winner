@@ -16,6 +16,7 @@ import {
   Check,
   CloudUpload,
   AlignJustify,
+  Minus,
   Loader2,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
@@ -173,6 +174,20 @@ function Index() {
       .then(() => showStatus("Clean copy (blank line) done!", "success"));
   }
 
+  function copyCleanNoNewlines() {
+    // Join every segment with a single space and collapse any internal
+    // newlines/whitespace so the result is one continuous line.
+    const joined = fragments
+      .map((f) => f.replace(/\s+/g, " ").trim())
+      .join(" ")
+      .replace(/\s+/g, " ")
+      .trim();
+
+    navigator.clipboard
+      .writeText(joined)
+      .then(() => showStatus("Clean copy (single line, spaced) done!", "success"));
+  }
+
   async function clearAll() {
     const freshTemplate = "--- [Paste #1] ---\n\n";
     setContent(freshTemplate);
@@ -305,6 +320,13 @@ function Index() {
             >
               <AlignJustify className="w-4 h-4" />
               Copy Clean (1 space)
+            </button>
+            <button
+              onClick={copyCleanNoNewlines}
+              className="flex items-center gap-2.5 px-6 py-3 bg-indigo-100 text-indigo-700 rounded-2xl font-semibold"
+            >
+              <Minus className="w-4 h-4" />
+              Copy Clean (no newlines)
             </button>
             <button
               onClick={copyAll}

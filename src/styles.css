@@ -142,3 +142,40 @@
     color: var(--color-foreground);
   }
 }
+
+/*
+ * Mobile-friendly horizontally-scrollable button row.
+ * Use for "button cloud" / copy-button groups that would otherwise
+ * wrap or overflow awkwardly on small screens.
+ */
+@layer components {
+  .button-scroll-row {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+    padding-bottom: 0.25rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 12px,
+      black calc(100% - 12px),
+      transparent
+    );
+  }
+
+  .button-scroll-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .button-scroll-row > * {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    white-space: nowrap;
+    min-height: 44px;
+  }
+}

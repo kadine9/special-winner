@@ -5,168 +5,222 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Enchantimals Style Enhancements
- * - Stickers: colorful badges
- * - Floaters: layered floating elements
- * - Mobile-friendly: responsive, touch-optimized layout
+ * "Pony Skies" theme
+ * A storybook-pastel system: dawn-gradient sky, cloud-white cards,
+ * scrapbook stickers, and slow-drifting ambient floaters.
+ * Palette: dawn lavender/blush sky, orchid mane (primary), sky-blue
+ * (secondary), meadow mint, cutie-mark gold, and warm plum ink.
  */
 
 @theme inline {
-  /* Radii for soft shapes */
-  --radius-sm: calc(var(--radius) - 4px);
+  --font-display: "Baloo 2", ui-rounded, "Segoe UI Rounded", system-ui, sans-serif;
+  --font-body: "Nunito", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "Cascadia Code", monospace;
+
+  /* Extra-soft radii for a rounded, storybook feel */
+  --radius-sm: calc(var(--radius) - 6px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
-  --radius-3xl: calc(var(--radius) + 12px);
-  --radius-4xl: calc(var(--radius) + 16px);
+  --radius-xl: calc(var(--radius) + 6px);
+  --radius-2xl: calc(var(--radius) + 12px);
+  --radius-3xl: calc(var(--radius) + 20px);
+  --radius-4xl: calc(var(--radius) + 28px);
 
-  /* Color palette inspired by Enchantimals, playful and pastel */
-  --color-background: oklch(0.95 0.03 240);
-  --color-foreground: oklch(0.1 0.02 270);
-  --color-card: oklch(0.98 0.04 245);
-  --color-card-foreground: oklch(0.1 0.02 270);
-  --color-popover: oklch(0.98 0.04 245);
-  --color-popover-foreground: oklch(0.1 0.02 270);
+  --color-background: #f3eeff;
+  --color-foreground: #402c55;
+  --color-card: #ffffff;
+  --color-card-foreground: #402c55;
+  --color-popover: #ffffff;
+  --color-popover-foreground: #402c55;
 
-  --color-primary: oklch(0.75 0.2 340); /* Bright coral */
-  --primary-foreground: oklch(0.98 0.003 247);
+  /* Orchid mane — primary */
+  --color-primary: #b85fcc;
+  --color-primary-foreground: #ffffff;
 
-  --color-secondary: oklch(0.65 0.15 185); /* Soft turquoise */
-  --secondary-foreground: oklch(0.98 0.003 247);
+  /* Sky blue — secondary */
+  --color-secondary: #4fb6e0;
+  --color-secondary-foreground: #0f3140;
 
-  --color-muted: oklch(0.8 0.1 300); /* Pastel purple */
-  --muted-foreground: oklch(0.2 0.02 270);
+  --color-muted: #efe6fb;
+  --color-muted-foreground: #7c6892;
 
-  --color-accent: oklch(0.85 0.15 45); /* Bright yellow */
-  --accent-foreground: oklch(0.98 0.003 247);
+  /* Cutie-mark gold — accent */
+  --color-accent: #ffc24b;
+  --color-accent-foreground: #4a3308;
 
-  --color-destructive: oklch(0.0 0.3 20); /* Bright red */
-  --destructive-foreground: oklch(0.98 0.003 247);
+  /* Meadow mint — success / tertiary */
+  --color-mint: #3fcf9e;
+  --color-mint-foreground: #06301f;
 
-  --color-border: oklch(0.8 0.02 250);
-  --color-input: oklch(0.8 0.02 250);
+  /* Bubblegum rose — extra accent for stickers */
+  --color-rose: #ff7fb4;
+  --color-rose-foreground: #55112f;
 
-  --color-ring: oklch(0.75 0.1 340);
-  --color-chart-1: oklch(0.9 0.2 60);
-  --color-chart-2: oklch(0.8 0.15 200);
-  --color-chart-3: oklch(0.7 0.1 120);
-  --color-chart-4: oklch(0.85 0.2 280);
-  --color-chart-5: oklch(0.75 0.2 45);
+  --color-destructive: #e8577a;
+  --color-destructive-foreground: #ffffff;
 
-  --color-sidebar: oklch(0.75 0.1 340);
-  --color-sidebar-foreground: oklch(0.1 0.02 270);
-  --color-sidebar-primary: oklch(0.75 0.2 340);
-  --color-sidebar-primary-foreground: oklch(0.98 0.003 247);
-  --color-sidebar-accent: oklch(0.85 0.15 45);
-  --color-sidebar-accent-foreground: oklch(0.98 0.003 247);
-  --color-sidebar-border: oklch(0.8 0.02 250);
-  --color-sidebar-ring: oklch(0.75 0.1 340);
+  --color-border: #e4d6f7;
+  --color-input: #e4d6f7;
+  --color-ring: #b85fcc;
+
+  --color-chart-1: #b85fcc;
+  --color-chart-2: #4fb6e0;
+  --color-chart-3: #3fcf9e;
+  --color-chart-4: #ffc24b;
+  --color-chart-5: #ff7fb4;
+
+  --color-sidebar: #ffffff;
+  --color-sidebar-foreground: #402c55;
+  --color-sidebar-primary: #b85fcc;
+  --color-sidebar-primary-foreground: #ffffff;
+  --color-sidebar-accent: #ffc24b;
+  --color-sidebar-accent-foreground: #4a3308;
+  --color-sidebar-border: #e4d6f7;
+  --color-sidebar-ring: #b85fcc;
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(0.95 0.03 240);
-  --foreground: oklch(0.1 0.02 270);
-  --card: oklch(0.98 0.04 245);
-  --card-foreground: oklch(0.1 0.02 270);
-  --popover: oklch(0.98 0.04 245);
-  --popover-foreground: oklch(0.1 0.02 270);
-  --primary: oklch(0.75 0.2 340);
-  --primary-foreground: oklch(0.98 0.003 247);
-  --secondary: oklch(0.65 0.15 185);
-  --secondary-foreground: oklch(0.98 0.003 247);
-  --muted: oklch(0.8 0.1 300);
-  --muted-foreground: oklch(0.2 0.02 270);
-  --accent: oklch(0.85 0.15 45);
-  --accent-foreground: oklch(0.98 0.003 247);
-  --destructive: oklch(0.0 0.3 20);
-  --destructive-foreground: oklch(0.98 0.003 247);
-  --border: oklch(0.8 0.02 250);
-  --input: oklch(0.8 0.02 250);
-  --ring: oklch(0.75 0.1 340);
-  --chart-1: oklch(0.9 0.2 60);
-  --chart-2: oklch(0.8 0.15 200);
-  --chart-3: oklch(0.7 0.1 120);
-  --chart-4: oklch(0.85 0.2 280);
-  --chart-5: oklch(0.75 0.2 45);
-  --sidebar: oklch(0.75 0.1 340);
-  --sidebar-foreground: oklch(0.1 0.02 270);
-  --sidebar-primary: oklch(0.75 0.2 340);
-  --sidebar-primary-foreground: oklch(0.98 0.003 247);
-  --sidebar-accent: oklch(0.85 0.15 45);
-  --sidebar-accent-foreground: oklch(0.98 0.003 247);
-  --sidebar-border: oklch(0.8 0.02 250);
-  --sidebar-ring: oklch(0.75 0.1 340);
+  --radius: 1.25rem;
+  --background: #f3eeff;
+  --foreground: #402c55;
+  --card: #ffffff;
+  --card-foreground: #402c55;
+  --popover: #ffffff;
+  --popover-foreground: #402c55;
+  --primary: #b85fcc;
+  --primary-foreground: #ffffff;
+  --secondary: #4fb6e0;
+  --secondary-foreground: #0f3140;
+  --muted: #efe6fb;
+  --muted-foreground: #7c6892;
+  --accent: #ffc24b;
+  --accent-foreground: #4a3308;
+  --mint: #3fcf9e;
+  --mint-foreground: #06301f;
+  --rose: #ff7fb4;
+  --rose-foreground: #55112f;
+  --destructive: #e8577a;
+  --destructive-foreground: #ffffff;
+  --border: #e4d6f7;
+  --input: #e4d6f7;
+  --ring: #b85fcc;
+  --chart-1: #b85fcc;
+  --chart-2: #4fb6e0;
+  --chart-3: #3fcf9e;
+  --chart-4: #ffc24b;
+  --chart-5: #ff7fb4;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #402c55;
+  --sidebar-primary: #b85fcc;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #ffc24b;
+  --sidebar-accent-foreground: #4a3308;
+  --sidebar-border: #e4d6f7;
+  --sidebar-ring: #b85fcc;
 }
 
-/* Base styles for the theme */
 @layer base {
   * {
     border-color: var(--color-border);
   }
 
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-body);
   }
 }
 
-/* Components for stickers and floaters */
+/* ---------------------------------------------------------------- */
+/* Stickers + floaters + storybook surfaces                          */
+/* ---------------------------------------------------------------- */
 @layer components {
-  /* Stickers: colorful badges */
-  .sticker {
-    @apply px-3 py-1 rounded-full font-semibold text-sm shadow-lg;
-    background-color: var(--color-accent);
-    color: var(--accent-foreground);
-    border: 2px solid var(--color-border);
-    transition: transform 0.2s, box-shadow 0.2s;
+  /* A scrapbook-style sticker badge: circular, rotated, thick paper edge */
+  .pony-sticker {
+    @apply absolute inline-flex items-center justify-center rounded-full shadow-[0_4px_0_rgba(0,0,0,0.08),0_8px_14px_rgba(64,44,85,0.18)];
+    border: 3px solid white;
+    transition: transform 0.25s ease;
   }
 
-  .sticker:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  .pony-sticker:hover {
+    transform: scale(1.08) rotate(0deg) !important;
   }
 
-  /* Floaters: floating icons or badges overlayed */
-  .floater {
-    @apply absolute p-2 rounded-full shadow-lg;
-    background-color: var(--color-primary);
-    color: var(--primary-foreground);
-    font-size: 0.75rem;
-    z-index: 50;
-    animation: float 3s ease-in-out infinite;
+  /* Ambient floater shapes drifting behind content */
+  .pony-floater {
+    @apply pointer-events-none absolute select-none;
+    will-change: transform;
+    animation: pony-drift 10s ease-in-out infinite;
   }
 
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
+  .pony-floater-slow {
+    animation-duration: 16s;
   }
 
-  /* Example floating icon overlay in a container */
-  .float-container {
-    @apply relative;
+  .pony-floater-twinkle {
+    animation: pony-twinkle 4s ease-in-out infinite;
+  }
+
+  /* Washi-tape strip across the top of a card */
+  .washi-tape {
+    @apply absolute -top-3 left-1/2 -translate-x-1/2 h-6 w-20 rounded-sm opacity-90 shadow-sm;
+    transform: translateX(-50%) rotate(-3deg);
+  }
+
+  /* Soft cloud card */
+  .cloud-card {
+    @apply relative bg-card border border-border/70 rounded-3xl shadow-[0_10px_30px_-12px_rgba(184,95,204,0.25)];
   }
 }
 
-/* Responsive layout for mobile friendliness */
-@layer utilities {
-  /* Make sure containers are flexible and touch-friendly */
-  .responsive-container {
-    @apply max-w-full px-4 sm:px-6 md:px-8;
+@keyframes pony-drift {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
   }
-
-  /* Larger tap targets for buttons and clickable items */
-  .btn {
-    @apply px-4 py-2 rounded-lg text-lg font-medium;
+  50% {
+    transform: translate(10px, -18px) rotate(6deg);
   }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
 
-  /* Flexible stacks for small screens */
-  .stack {
-    @apply flex flex-col gap-4;
+@keyframes pony-twinkle {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+@keyframes pony-bounce-in {
+  0% {
+    transform: scale(0.85) translateY(6px);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+.pony-pop-in {
+  animation: pony-bounce-in 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pony-floater,
+  .pony-floater-slow,
+  .pony-floater-twinkle,
+  .pony-pop-in {
+    animation: none !important;
   }
 }
